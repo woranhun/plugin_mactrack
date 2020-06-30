@@ -72,7 +72,10 @@ function get_JEX_switch_ports($site, &$device, $lowPort = 0, $highPort = 0) {
 			($ifInterfaces[$ifIndex]['ifType'] == 'ieee8023adLag(161)')) {
 			$device['ports_total']++;
 		}
-
+		echo "Trunkports:\n";
+		echo $ifInterfaces[$ifIndex]['trunkPortState'];
+		echo "Trunkports:\n";
+		
 		if ($ifInterfaces[$ifIndex]['trunkPortState'] == 3) {
 			$device['ports_trunk']++;
 		}
