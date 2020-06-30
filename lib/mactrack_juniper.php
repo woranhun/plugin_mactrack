@@ -102,7 +102,7 @@ function get_JEX_switch_ports($site, &$device, $lowPort = 0, $highPort = 0) {
 		foreach ($mac_results as $num => $mac_result) {
 			if ($mac_result != 0) {
 				$Xvlanid = substr($num, strpos($num, '.')+1, strpos($num, '.',1)-1);
-				$Xmac    = mach(substr($num, strpos($num, '.') + 1));
+				$Xmac    = mach(substr($num, strpos($num, '.',1) + 1));
 
 				$ifIndex  = @$port_results[".".strval($mac_result)];
 				$ifType   = @$ifInterfaces[$ifIndex]['ifType'];
