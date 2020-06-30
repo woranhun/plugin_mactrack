@@ -73,11 +73,8 @@ function get_JEX_switch_ports($site, &$device, $lowPort = 0, $highPort = 0) {
 			($ifInterfaces[$ifIndex]['ifType'] == 'ieee8023adLag(161)')) {
 			$device['ports_total']++;
 		}
-		echo "Trunkports:\n";
-		print_r($vlan_trunkstatus);
-		echo "TrunkportsVEGE:\n";
 
-		if ($ifInterfaces[$ifIndex]['trunkPortState'] == 3) {
+		if ($ifInterfaces[$ifIndex]['trunkPortState'] == 2) {
 			$device['ports_trunk']++;
 		}
 	}
