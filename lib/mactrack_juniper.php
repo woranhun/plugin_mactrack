@@ -51,6 +51,7 @@ function get_JEX_switch_ports($site, &$device, $lowPort = 0, $highPort = 0) {
 	/* get VLAN information */
 	$vlan_ids   = xform_standard_indexed_data('.1.3.6.1.4.1.2636.3.40.1.5.1.5.1.5', $device);
 	$vlan_names = xform_standard_indexed_data('.1.3.6.1.4.1.2636.3.40.1.5.1.5.1.2', $device);
+	$vlan_trunkstatus = xform_standard_indexed_data('.1.3.6.1.4.1.2636.3.40.1.5.1.7.1.5', $device);
 
 	$device['vlans_total'] = sizeof($vlan_ids) - 1;
 	mactrack_debug('VLAN data collected. There are ' . (cacti_sizeof($vlan_ids) - 1) . ' VLANS.');
