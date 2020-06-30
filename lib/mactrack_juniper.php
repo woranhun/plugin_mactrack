@@ -62,7 +62,7 @@ function get_JEX_switch_ports($site, &$device, $lowPort = 0, $highPort = 0) {
 			$device['ports_trunk']++;
 		}
 	}
-	print_r($vts);
+	print_r($vlan_trunkstatus);
 	/* get the ifIndexes for the device */
 	$ifIndexes = xform_standard_indexed_data('.1.3.6.1.2.1.2.2.1.1', $device);
 	mactrack_debug('ifIndexes data collection complete');
