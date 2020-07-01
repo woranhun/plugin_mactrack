@@ -78,6 +78,7 @@ function get_JEX_switch_ports($site, &$device, $lowPort = 0, $highPort = 0) {
 
 	foreach ($ifIndexes as $ifIndex) {
 		$ifInterfaces[$ifIndex]['trunkPortState'] = @$vlan_trunkstatus[$ifIndex];
+		$ifInterfaces[$ifIndex]['portDesc']=$portDescription[$ifIndex];
 
 		if (($ifInterfaces[$ifIndex]['ifType'] == 'propVirtual(53)') ||
 			($ifInterfaces[$ifIndex]['ifType'] == '53') ||
@@ -116,6 +117,7 @@ function get_JEX_switch_ports($site, &$device, $lowPort = 0, $highPort = 0) {
 				$ifIndex  = @$port_results[".".strval($mac_result)];
 				$ifType   = @$ifInterfaces[$ifIndex]['ifType'];
 				$ifName   = @$ifInterfaces[$ifIndex]['ifName'];
+				$ifDesc   = @$ifInterfaces[$ifIndex]['portDesc'];
 				echo "\n";
 				print_r($ifInterfaces[$ifIndex]);
 				echo "\n";
@@ -130,14 +132,15 @@ function get_JEX_switch_ports($site, &$device, $lowPort = 0, $highPort = 0) {
 					$port_array[$i]['vlan_name'] = $active_vlans[$Xvlanid]['vlan_name'];//@$vlan_names[$Xvlandid];
 					//$port_array[$i]['port_number'] = @$port_results[".".strval($mac_result)];
 					$port_array[$i]['port_number'] = trim ( $ifName );
-					$port_array[$i]['port_name'] = trim ( $ifName );
+					$port_array[$i]['port_name'] = $ifDesc;
 					$port_array[$i]['mac_address'] = xform_mac_address($Xmac);
 					$device['ports_active']++;
 
 					mactrack_debug('VLAN: ' . $port_array[$i]['vlan_id'] . ', ' .
 						'NAME: ' . $port_array[$i]['vlan_name'] . ', ' .
 						'PORT: ' . $ifIndex . ', ' .
-						'NAME: ' . $port_array[$i]['port_name'] . ', ' .
+						'NAME: ' . $port_array[$i]['port_number'] . ', ' .
+						'DESC: ' . $port_array[$i]['port_name'] . ', ' .
 						'MAC: '  . $port_array[$i]['mac_address']);
 
 					$i++;
