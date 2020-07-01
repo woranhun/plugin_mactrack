@@ -111,7 +111,9 @@ function get_JEX_switch_ports($site, &$device, $lowPort = 0, $highPort = 0) {
 				$ifIndex  = @$port_results[".".strval($mac_result)];
 				$ifType   = @$ifInterfaces[$ifIndex]['ifType'];
 				$ifName   = @$ifInterfaces[$ifIndex]['ifName'];
+				echo "\n";
 				print_r($ifInterfaces[$ifIndex]);
+				echo "\n";
 				$portName = $ifName;
 
 				$portTrunkStatus = @$ifInterfaces[$ifIndex]['trunkPortState'];
