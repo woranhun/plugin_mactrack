@@ -71,6 +71,11 @@ function get_JEX_switch_ports($site, &$device, $lowPort = 0, $highPort = 0) {
 	/* get and store the interfaces table */
 	$ifInterfaces = build_InterfacesTable($device, $ifIndexes, true, false);
 
+	/* get port description */
+
+	$portDescription = xform_standard_indexed_data('.1.0.8802.1.1.2.1.3.7.1.4', $device);
+	print_r($portDescription);
+
 	foreach ($ifIndexes as $ifIndex) {
 		$ifInterfaces[$ifIndex]['trunkPortState'] = @$vlan_trunkstatus[$ifIndex];
 
